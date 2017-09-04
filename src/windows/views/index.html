@@ -37,10 +37,10 @@
           <div class="pane pane-sm sidebar">
             <nav class="nav-group">
               <h5 class="nav-group-title">Favorites</h5>
-              <tree-item id="tree">
+              <tree-item id="todo-list">
                 <tree v-for="todo in nodes">
                   <span class="nav-group-item">
-                    <span class="icon icon-home" id={{todo.connstr}}></span>
+                    <span class="icon icon-home" v-bind:id="todo.connstr"></span>
                     {{todo.name}}
                   </span>
                 </tree>

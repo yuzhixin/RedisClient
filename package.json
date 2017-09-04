@@ -1,0 +1,9 @@
+{
+	"name"    : "RedisClient",
+	"version" : "0.1.0",
+	"main"    : "src/main.js",
+  "dependencies": {
+    "glob": "^7.1.0",
+    "electron-store": "1.2.0"
+  }
+}

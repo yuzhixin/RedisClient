@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Demo App</title>
+
+    <!-- Photon.css -->
+    <link rel="stylesheet" href="../../../assets/photon-0.1.2/dist/css/photon.min.css">
+
+    <style>
+      .window {
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .sidebar {
+        background-color: #f5f5f4;
+      }
+    </style>
+    <script src="../../../assets/js/vue.min.js"></script>
+  </head>
+  <body>
+    <div class="window">
+      <header class="toolbar toolbar-header">
+        <h1 class="title">Photon</h1>
+
+        <div class="toolbar-actions">
+          <button class="btn btn-default" id="new-connection">
+            <span class="icon icon-home icon-text"></span>
+            Filters
+          </button>
+        </div>
+      </header>
+
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane" id='form'>
+            <form>
+              <div class="form-group">
+                <label>name</label>
+                <input type="input" class="form-control" placeholder="name" id="name" required="required" v-model="data.name" ref="name">
+              </div>
+              <div class="form-group">
+                <label>ip address</label>
+                <input type="input" class="form-control" placeholder="ip address" id="host" required="required" v-model="data.host" ref="host">
+              </div>
+              <div class="form-group">
+                <label>port</label>
+                <input type="input" class="form-control" placeholder="port" id="port" required="required"  v-model="data.port" ref="port">
+              </div>
+              <div class="form-group">
+                <label>password</label>
+                <input type="password" class="form-control" placeholder="password" id="password" v-model="data.password" ref="password">
+              </div>
+              <div class="form-actions">
+                <button type="button" id="sub-button" class="btn btn-form btn-primary" @click="submit">OK</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script>
+    require('../native-ui/createConnection')
+  </script>
+  </body>
+</html>

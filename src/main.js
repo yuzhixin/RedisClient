@@ -35,7 +35,6 @@ class ElectronicRedisClient {
     this.clientWindow = new redisClient();
   }
   
-  // Require each JS file in the main-process dir
   loadDialogs () {
     var files = glob.sync(path.join(__dirname, './windows/dialogs/*.js'))
     files.forEach(function (file) {

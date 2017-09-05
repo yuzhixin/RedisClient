@@ -4,13 +4,10 @@ const ipc = require('electron').ipcRenderer
 const Store = require('electron-store')
 const conf = new Store();
 const newConnection = document.getElementById('new-connection')
-var bus = require('./bus')
 
 newConnection.addEventListener('click', function (event) {
   ipc.send('open-connection-window');
 })
-
-
 
 var tree = new Vue({
   el: '#todo-list',
@@ -34,10 +31,7 @@ for (let i = 0; i < conf.size; i++) {
 	}
 };
 
-bus.$on('add-connect-data', function (value) {
-	console.log(value)
-  tree.nodes.push(value),
-  console.log(value)
-})
 
-module.exports = tree;
+ipc.on('add-connect-data-relpy', (event, arg) => {
+	tree.nodes.push(arg);
+})

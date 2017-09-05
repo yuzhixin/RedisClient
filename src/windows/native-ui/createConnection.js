@@ -5,7 +5,6 @@ const {remote, ipcRenderer} = require('electron')
 const ipc = require('electron').ipcRenderer
 const Store = require('electron-store')
 const conf = new Store();
-var bus = require('./bus')
 
 let app=new Vue({
   el:'#form',
@@ -25,11 +24,10 @@ let app=new Vue({
           return
         }
       })
-      ipc.send('add-connect-data', this.data);
       var connstr = 'conn-'+ conf.size.toString() + '-true';
       this.data['connstr'] = connstr;
-      // remote.getCurrentWindow().close()
-      bus.$emit('add-connect-data', this.data);
+      ipc.send('add-connect-data', this.data);
+      remote.getCurrentWindow().close()
     }
   }
 })

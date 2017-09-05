@@ -1,9 +1,10 @@
 {
-	"name"    : "RedisClient",
-	"version" : "0.1.0",
-	"main"    : "src/main.js",
+  "name": "RedisClient",
+  "version": "0.1.0",
+  "main": "src/main.js",
   "dependencies": {
+    "electron-store": "1.2.0",
     "glob": "^7.1.0",
-    "electron-store": "1.2.0"
+    "vuex": "^2.4.0"
   }
 }

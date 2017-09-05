@@ -14,5 +14,6 @@ ipc.on('open-connection-window', function (event) {
 ipc.on('add-connect-data', function (event, arg) {
 	var size = conf.size;
 	var connstr = 'conn-'+ size.toString() + '-true';
-  conf.set(connstr, arg)
+	conf.set(connstr, arg);
+	RedisClient.clientWindow.Window.webContents.send('add-connect-data-relpy', arg);
 })

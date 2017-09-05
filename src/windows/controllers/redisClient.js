@@ -18,6 +18,8 @@ class redisClient {
       resizable: true,
       center: true,
       frame: false,
+      width: 900,
+      height: 600,
       icon: path.join(__dirname, '../../../assets/icon.png')
     })
 

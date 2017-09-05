@@ -15,8 +15,8 @@ class connectionWindow {
 
   createConnectionWindow() {
     this.Window = new BrowserWindow({
-      width: 600,
-      height: 800,
+      width: 500,
+      height: 400,
       resizable: true,
       fullscreenable: false,
       frame: false,
@@ -29,7 +29,7 @@ class connectionWindow {
 			protocol: 'file:',
 			slashes: true
 		}));
-    // this.Window.webContents.openDevTools()
+    this.Window.webContents.openDevTools()
   }
 
   initWindowEvents() {

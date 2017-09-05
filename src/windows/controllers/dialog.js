@@ -29,7 +29,7 @@ class dialogWindow {
 			protocol: 'file:',
 			slashes: true
 		}));
-    // this.Window.webContents.openDevTools();
+    this.Window.webContents.openDevTools();
   }
 
   initWindowEvents() {

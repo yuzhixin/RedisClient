@@ -1,13 +1,30 @@
 'use strict';
 
+const remote = require('electron')
 const ipc = require('electron').ipcRenderer
 const Store = require('electron-store')
 const conf = new Store();
 const newConnection = document.getElementById('new-connection')
+const plus = document.getElementById('icon-plus-circled')
+const minus = document.getElementById('icon-minus-circled')
+const cancel = document.getElementById('icon-cancel-circled')
 
 newConnection.addEventListener('click', function (event) {
   ipc.send('open-connection-window');
 })
+
+plus.addEventListener('click', function (event) {
+	ipc.send('main-window-plus');
+})
+
+minus.addEventListener('click', function (event) {
+  ipc.send('main-window-minus');
+})
+
+cancel.addEventListener('click', function (event) {
+  ipc.send('main-window-cancel');
+})
+
 
 ipc.on('add-connect-data-relpy', (event, data) => {
 	tree.nodes.push(data);

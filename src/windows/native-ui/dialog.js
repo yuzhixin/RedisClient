@@ -6,27 +6,23 @@ const ipc = require('electron').ipcRenderer
 const Store = require('electron-store')
 const conf = new Store();
 
-const buttonOK = document.getElementById('button-ok')
-const buttonCancel = document.getElementById('button-cancel')
-
 
 var dialog = new Vue({
   el: '#dialog',
   data: {
 		connstr: null
+	},
+	methods: {
+    buttonOK: function (events) {
+			ipc.send('del-connect-data', dialog.connstr);
+			remote.getCurrentWindow().hide();
+    },
+    buttonCancel: function(events){
+      remote.getCurrentWindow().hide();
+    }
   }
 });
 
 ipc.on('open-dialog-window-relpy', (event, connstr) => {
 	dialog.connstr = connstr
-})
-
-buttonOK.addEventListener('click', function (event) {
-	ipc.send('del-connect-data', dialog.connstr);
-	remote.getCurrentWindow().hide();
-})
-
-
-buttonCancel.addEventListener('click', function (event) {
-	remote.getCurrentWindow().hide();
 })

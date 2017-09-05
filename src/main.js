@@ -32,6 +32,12 @@ class ElectronicRedisClient {
         this.createClientWindow();
       }
     });
+
+    app.on('window-all-closed', () => {
+      if (process.platform !== 'darwin') {
+        app.quit();
+      }
+    });
   };
 
   createClientWindow() {
@@ -54,7 +60,6 @@ class ElectronicRedisClient {
     this.dialogWindow = new dialogWindow(this.clientWindow);
     this.dialogWindow.hide()
   }
-
 }
 
 const RedisClient = new ElectronicRedisClient();

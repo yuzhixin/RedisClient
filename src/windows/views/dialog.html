@@ -22,15 +22,22 @@
   <body>
     <div class="window">
       <header class="toolbar toolbar-header">
-        <h1 class="title">新建连接</h1>
+          <h1 class="title">警告</h1>
       </header>
-
       <div class="window-content">
-				<button class="btn btn-default" id="button-ok">ok</button>
-				<button class="btn btn-primary" id="button-cancel">cancel</button>
+        <div class="pane-group">
+          <div class="pane" id='dialog'>
+            <form>
+              <div class="form-actions">
+                <button type="button" class="btn btn-form btn-primary" @click="buttonOK">确定</button>
+                <button type="button" class="btn btn-form btn-default" @click="buttonCancel">取消</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <script>
+  <script>
     require('../native-ui/dialog')
   </script>
   </body>

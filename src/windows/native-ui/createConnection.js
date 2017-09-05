@@ -29,6 +29,9 @@ let app=new Vue({
       this.data['connstr'] = connstr;
       ipc.send('add-connect-data', this.data);
       remote.getCurrentWindow().hide()
+    },
+    cancel: function(events){
+      ipc.send('conn-window-cancel');
     }
   }
 })

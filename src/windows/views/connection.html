@@ -21,10 +21,6 @@
   </head>
   <body>
     <div class="window">
-      <header class="toolbar toolbar-header">
-        <h1 class="title">新建连接</h1>
-      </header>
-
       <div class="window-content">
         <div class="pane-group">
           <div class="pane" id='form'>
@@ -46,7 +42,8 @@
                 <input type="password" class="form-control" placeholder="password" id="password" v-model="data.password">
               </div>
               <div class="form-actions">
-                <button type="button" id="sub-button" class="btn btn-form btn-primary" @click="submit">OK</button>
+                <button type="button" class="btn btn-form btn-primary" @click="submit">确定</button>
+                <button type="button" class="btn btn-form btn-default" @click="cancel">取消</button>
               </div>
             </form>
           </div>

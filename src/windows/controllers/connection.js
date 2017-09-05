@@ -4,7 +4,7 @@
 const path = require('path');
 const { BrowserWindow } = require('electron');
 const url = require('url')
-
+const Common = require('../../common')
 
 class connectionWindow {
   constructor(redisClient) {
@@ -28,8 +28,10 @@ class connectionWindow {
 			pathname: path.join(__dirname, '/../views/connection.html'),
 			protocol: 'file:',
 			slashes: true
-		}));
-    this.Window.webContents.openDevTools()
+    }));
+    if(Common.DEBUG){
+      this.Window.webContents.openDevTools()
+    }
   }
 
   initWindowEvents() {

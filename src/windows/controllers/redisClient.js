@@ -5,7 +5,7 @@
 const path = require('path');
 const { app, shell, BrowserWindow } = require('electron');
 const url = require('url')
-
+const Common = require('../../common')
 
 class redisClient {
   constructor() {
@@ -26,7 +26,9 @@ class redisClient {
 			protocol: 'file:',
 			slashes: true
 		}))
-    this.Window.webContents.openDevTools()
+    if(Common.DEBUG){
+      this.Window.webContents.openDevTools()
+    }
   }
 }
 

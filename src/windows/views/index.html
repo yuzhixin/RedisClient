@@ -29,7 +29,6 @@
             <span class="icon icon-home icon-text"></span>
             新建连接
           </button>
-
           <div class="btn-group pull-right">
             <button class="btn btn-default" id="icon-plus-circled">
               <span class="icon icon-plus-circled"></span>
@@ -41,23 +40,114 @@
               <span class="icon icon-cancel-circled"></span>
             </button>
           </div>
-
         </div>
       </header>
       <div class="window-content">
-        <div class="pane-group">
-          <div class="pane pane-sm sidebar">
-            <nav class="nav-group">
-              <h5 class="nav-group-title">连接列表</h5>
-              <tree-item id="todo-list">
-                <tree v-for="todo in nodes">
-                  <span class="nav-group-item" @contextmenu.prevent="showDeleteDialog(todo.connstr)">
-                    <span class="icon icon-link" v-bind:id="todo.connstr"></span>
-                    {{todo.name}}
-                  </span>
-                </tree>
-              </tree-item>
-            </nav>
+        <div class="pane">
+          <div class="pane-group">
+            <div class="pane-min sidebar">
+              <nav class="nav-group">
+                <h5 class="nav-group-title">连接列表</h5>
+                <tree-item id="todo-list">
+                  <tree v-for="todo in nodes">
+                    <span class="nav-group-item" @contextmenu.prevent="showDeleteDialog(todo.connstr)">
+                      <span class="icon icon-link" v-bind:id="todo.connstr"></span>
+                      {{todo.name}}
+                    </span>
+                  </tree>
+                </tree-item>
+              </nav>
+            </div>
+            <div class="pane-min">
+              <table class="table-striped">
+                <thead>
+                  <tr>
+                    <th>
+                      <span class="nav-group-item">
+                        <span class="icon icon-drive"></span>
+                        Backup disk
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>bars.scss</td>
+                  </tr>
+                  <tr>
+                    <td>base.scss</td>
+                  </tr>
+                  <tr>
+                    <td>button-groups.scss</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pane-min">
+              <table class="table-striped">
+                <thead>
+                  <tr>
+                    <th>
+                      <span class="nav-group-item">
+                        <span class="icon icon-drive"></span>
+                        Backup disk
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>bars.scss</td>
+                  </tr>
+                  <tr>
+                    <td>base.scss</td>
+                  </tr>
+                  <tr>
+                    <td>button-groups.scss</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pane">
+              <div class="pane">
+                <table class="table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Kind</th>
+                      <th>Date Modified</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>bars.scss</td>
+                      <td>Document</td>
+                      <td>Oct 13, 2015</td>
+                    </tr>
+                    <tr>
+                        <td>bars.scss</td>
+                        <td>Document</td>
+                        <td>Oct 13, 2015</td>
+                      </tr>
+                      <tr>
+                          <td>bars.scss</td>
+                          <td>Document</td>
+                          <td>Oct 13, 2015</td>
+                        </tr>
+                        <tr>
+                            <td>bars.scss</td>
+                            <td>Document</td>
+                            <td>Oct 13, 2015</td>
+                          </tr>
+                          <tr>
+                              <td>bars.scss</td>
+                              <td>Document</td>
+                              <td>Oct 13, 2015</td>
+                            </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

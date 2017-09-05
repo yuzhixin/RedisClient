@@ -22,14 +22,7 @@
   <body>
     <div class="window">
       <header class="toolbar toolbar-header">
-        <h1 class="title">Photon</h1>
-
-        <div class="toolbar-actions">
-          <button class="btn btn-default" id="new-connection">
-            <span class="icon icon-home icon-text"></span>
-            Filters
-          </button>
-        </div>
+        <h1 class="title">新建连接</h1>
       </header>
 
       <div class="window-content">
@@ -38,19 +31,19 @@
             <form>
               <div class="form-group">
                 <label>name</label>
-                <input type="input" class="form-control" placeholder="name" id="name" required="required" v-model="data.name" ref="name">
+                <input type="input" class="form-control" placeholder="name" id="name" required="required" v-model="data.name">
               </div>
               <div class="form-group">
                 <label>ip address</label>
-                <input type="input" class="form-control" placeholder="ip address" id="host" required="required" v-model="data.host" ref="host">
+                <input type="input" class="form-control" placeholder="ip address" id="host" required="required" v-model="data.host">
               </div>
               <div class="form-group">
                 <label>port</label>
-                <input type="input" class="form-control" placeholder="port" id="port" required="required"  v-model="data.port" ref="port">
+                <input type="input" class="form-control" placeholder="port" id="port" required="required"  v-model="data.port">
               </div>
               <div class="form-group">
                 <label>password</label>
-                <input type="password" class="form-control" placeholder="password" id="password" v-model="data.password" ref="password">
+                <input type="password" class="form-control" placeholder="password" id="password" v-model="data.password">
               </div>
               <div class="form-actions">
                 <button type="button" id="sub-button" class="btn btn-form btn-primary" @click="submit">OK</button>

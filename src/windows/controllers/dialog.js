@@ -6,18 +6,18 @@ const { BrowserWindow } = require('electron');
 const url = require('url')
 
 
-class connectionWindow {
+class dialogWindow {
   constructor(redisClient) {
     this.redisClient = redisClient
     this.Window = null;
-    this.createConnectionWindow();
+    this.createDialogWindow();
   }
 
-  createConnectionWindow() {
+  createDialogWindow() {
     this.Window = new BrowserWindow({
-      width: 600,
-      height: 800,
-      resizable: true,
+      width: 300,
+      height: 100,
+      resizable: false,
       fullscreenable: false,
       frame: false,
       parent: this.redisClient.Window,
@@ -25,11 +25,11 @@ class connectionWindow {
     });
     this.initWindowEvents();
 		this.Window.loadURL(url.format({
-			pathname: path.join(__dirname, '/../views/connection.html'),
+			pathname: path.join(__dirname, '/../views/dialog.html'),
 			protocol: 'file:',
 			slashes: true
 		}));
-    // this.Window.webContents.openDevTools()
+    // this.Window.webContents.openDevTools();
   }
 
   initWindowEvents() {
@@ -41,7 +41,7 @@ class connectionWindow {
     });
   }
 
-  show() {
+  show(connstr) {
     if (!this.Window) {
       this.createConnectionWindow();
     }
@@ -53,4 +53,4 @@ class connectionWindow {
   }
 }
 
-module.exports = connectionWindow;
+module.exports = dialogWindow;

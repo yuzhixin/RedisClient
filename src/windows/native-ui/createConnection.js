@@ -13,7 +13,8 @@ let app=new Vue({
       port:'6379',
       host:'127.0.0.1',
       name:'新建连接',
-      password:''
+      password:'',
+      isAble: 'true'
     }
   },
   methods: {
@@ -27,7 +28,7 @@ let app=new Vue({
       var connstr = 'conn-'+ conf.size.toString() + '-true';
       this.data['connstr'] = connstr;
       ipc.send('add-connect-data', this.data);
-      remote.getCurrentWindow().close()
+      remote.getCurrentWindow().hide()
     }
   }
 })

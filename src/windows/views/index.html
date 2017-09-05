@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Demo App</title>
+    <title>RedisClient</title>
 
     <!-- Photon.css -->
     <link rel="stylesheet" href="../../../assets/photon-0.1.2/dist/css/photon.min.css">
@@ -22,12 +22,12 @@
   <body>
     <div class="window">
       <header class="toolbar toolbar-header">
-        <h1 class="title">Photon</h1>
+        <h1 class="title">RedisClient</h1>
 
         <div class="toolbar-actions">
           <button class="btn btn-default" id="new-connection">
             <span class="icon icon-home icon-text"></span>
-            Filters
+            新建连接
           </button>
         </div>
       </header>
@@ -36,10 +36,10 @@
         <div class="pane-group">
           <div class="pane pane-sm sidebar">
             <nav class="nav-group">
-              <h5 class="nav-group-title">Favorites</h5>
+              <h5 class="nav-group-title">连接列表</h5>
               <tree-item id="todo-list">
                 <tree v-for="todo in nodes">
-                  <span class="nav-group-item">
+                  <span class="nav-group-item" @contextmenu.prevent="showDeleteDialog(todo.connstr)">
                     <span class="icon icon-home" v-bind:id="todo.connstr"></span>
                     {{todo.name}}
                   </span>

@@ -15,6 +15,7 @@ class ElectronicRedisClient {
     this.connectionWindow = null;
     this.dialogWindow = null;
     this.loadingWindow = null;
+    this.windiws = [];
   }
 
   init() {
@@ -56,17 +57,20 @@ class ElectronicRedisClient {
 
   createConnectionWindow() {
     this.connectionWindow = new connectionWindow(this.clientWindow);
-    this.connectionWindow.hide()
+    this.connectionWindow.hide();
+    this.windiws.push(this.connectionWindow);
   }
 
   createDialogWindow() {
     this.dialogWindow = new dialogWindow(this.clientWindow);
-    this.dialogWindow.hide()
+    this.dialogWindow.hide();
+    this.windiws.push(this.dialogWindow);
   }
 
   createLoadingWindow() {
     this.loadingWindow = new loadingWindow();
-    this.loadingWindow.hide()
+    this.loadingWindow.hide();
+    this.windiws.push(this.loadingWindow);
   }
 }
 

@@ -5,7 +5,7 @@ const ipc = require('electron').ipcMain
 const RedisClient = require('../../main')
 const Store = require('electron-store')
 const conf = new Store();
-const app = require('electron')
+
 
 ipc.on('open-connection-window', function (event) {
 	RedisClient.connectionWindow.show();
@@ -40,9 +40,11 @@ ipc.on('main-window-minus', function (event) {
 })
 
 ipc.on('main-window-cancel', function (event) {
+	for(var i = 0;i < RedisClient.windiws.length; i++) {
+		RedisClient.windiws[i].Window.close()
+	};
 	RedisClient.clientWindow.Window.close();
 })
-
 
 ipc.on('conn-window-cancel', function (event) {
 	RedisClient.connectionWindow.Window.hide();

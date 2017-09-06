@@ -1,34 +1,36 @@
 'use strict';
 
-const remote = require('electron')
-const ipc = require('electron').ipcRenderer
-const Store = require('electron-store')
+const remote = require('electron');
+const ipc = require('electron').ipcRenderer;
+const Store = require('electron-store');
 const conf = new Store();
-const newConnection = document.getElementById('new-connection')
-const plus = document.getElementById('icon-plus-circled')
-const minus = document.getElementById('icon-minus-circled')
-const cancel = document.getElementById('icon-cancel-circled')
+const redisServer = require('../controllers/redisServer');
+const newConnection = document.getElementById('new-connection');
+const plus = document.getElementById('icon-plus-circled');
+const minus = document.getElementById('icon-minus-circled');
+const cancel = document.getElementById('icon-cancel-circled');
+
 
 newConnection.addEventListener('click', function (event) {
   ipc.send('open-connection-window');
-})
+});
 
 plus.addEventListener('click', function (event) {
 	ipc.send('main-window-plus');
-})
+});
 
 minus.addEventListener('click', function (event) {
   ipc.send('main-window-minus');
-})
+});
 
 cancel.addEventListener('click', function (event) {
   ipc.send('main-window-cancel');
-})
+});
 
 
 ipc.on('add-connect-data-relpy', (event, data) => {
 	tree.nodes.push(data);
-})
+});
 
 ipc.on('del-connect-data-relpy', (event, data) => {
 		for (var i = 0; i < tree.nodes.length; i++){
@@ -44,7 +46,7 @@ ipc.on('del-connect-data-relpy', (event, data) => {
 			conf.set(data, newData);
 		} 
 	};
-})
+});
 
 var tree = new Vue({
   el: '#todo-list',
@@ -57,6 +59,12 @@ var tree = new Vue({
 		},
     showDeleteDialog: function(connstr) {
 			ipc.send('open-dialog-window', connstr);
+		},
+		initRedisClient: function(connstr) {
+			alert(conf.get(connstr));
+			console.log(conf.get(connstr));
+			const redis = new redisServer(conf.get(connstr))
+			alert(redis);
 		}
 	}
 });

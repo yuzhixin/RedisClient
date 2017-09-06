@@ -50,7 +50,7 @@
                 <h5 class="nav-group-title">连接列表</h5>
                 <tree-item id="todo-list">
                   <tree v-for="todo in nodes">
-                    <span class="nav-group-item" @contextmenu.prevent="showDeleteDialog(todo.connstr)">
+                    <span class="nav-group-item" @contextmenu.prevent="showDeleteDialog(todo.connstr)" v-on:click="initRedisClient(todo.connstr)">
                       <span class="icon icon-link" v-bind:id="todo.connstr"></span>
                       {{todo.name}}
                     </span>
@@ -63,7 +63,7 @@
                 <thead>
                   <tr>
                     <th>
-                      1111111111111
+                      Databases
                     </th>
                   </tr>
                 </thead>
@@ -85,7 +85,7 @@
                 <thead>
                   <tr>
                     <th>
-                      2222222222222
+                      Keys
                     </th>
                   </tr>
                 </thead>

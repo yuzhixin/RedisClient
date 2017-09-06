@@ -5,6 +5,7 @@
   "dependencies": {
     "electron-store": "1.2.0",
     "glob": "^7.1.0",
+    "redis": "^2.8.0",
     "vue-contextmenu": "^1.4.7",
     "vuex": "^2.4.0"
   }

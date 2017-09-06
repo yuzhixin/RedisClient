@@ -5,6 +5,7 @@ const {app, ipcMain} = require('electron');
 const redisClient = require('./windows/controllers/redisClient');
 const connectionWindow = require('./windows/controllers/connection');
 const dialogWindow = require('./windows/controllers/dialog');
+const loadingWindow = require('./windows/controllers/loading');
 const glob = require('glob')
 
 
@@ -13,6 +14,7 @@ class ElectronicRedisClient {
     this.clientWindow = null;
     this.connectionWindow = null;
     this.dialogWindow = null;
+    this.loadingWindow = null;
   }
 
   init() {
@@ -24,6 +26,7 @@ class ElectronicRedisClient {
       this.createClientWindow();
       this.createConnectionWindow();
       this.createDialogWindow();
+      this.createLoadingWindow();
       this.loadDialogs();
     });
 
@@ -59,6 +62,11 @@ class ElectronicRedisClient {
   createDialogWindow() {
     this.dialogWindow = new dialogWindow(this.clientWindow);
     this.dialogWindow.hide()
+  }
+
+  createLoadingWindow() {
+    this.loadingWindow = new loadingWindow();
+    this.loadingWindow.hide()
   }
 }
 

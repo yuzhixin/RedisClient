@@ -4,34 +4,27 @@
 const path = require('path');
 const { BrowserWindow } = require('electron');
 const url = require('url')
-const Common = require('../../common')
 
-class dialogWindow {
-  constructor(redisClient) {
-    this.redisClient = redisClient;
+class loadingWindow {
+  constructor() {
     this.Window = null;
-    this.createDialogWindow();
+    this.createLoadingWindow();
   }
 
-  createDialogWindow() {
+  createLoadingWindow() {
     this.Window = new BrowserWindow({
-      width: 300,
-      height: 100,
-      resizable: false,
-      fullscreenable: false,
       frame: false,
-      parent: this.redisClient.Window,
-      modal: true
+      width: 65,
+      height: 70,
+      transparent: true,
+      skipTaskbar: true,
     });
     this.initWindowEvents();
 		this.Window.loadURL(url.format({
-			pathname: path.join(__dirname, '/../views/dialog.html'),
+			pathname: path.join(__dirname, '/../views/loading.html'),
 			protocol: 'file:',
 			slashes: true
 		}));
-    if(Common.DEBUG){
-      this.Window.webContents.openDevTools()
-    }
   }
 
   initWindowEvents() {
@@ -41,11 +34,15 @@ class dialogWindow {
     this.Window.once('ready-to-show', () => {
       this.Window.show();
     });
+    this.Window.on('blur', function (e, cmd) {
+      this.hide()
+    })
+
   }
 
   show(connstr) {
     if (!this.Window) {
-      this.createConnectionWindow();
+      this.createLoadingWindow();
     }
     this.Window.show();
   }
@@ -55,4 +52,4 @@ class dialogWindow {
   }
 }
 
-module.exports = dialogWindow;
+module.exports = loadingWindow;

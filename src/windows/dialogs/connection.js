@@ -47,3 +47,12 @@ ipc.on('main-window-cancel', function (event) {
 ipc.on('conn-window-cancel', function (event) {
 	RedisClient.connectionWindow.Window.hide();
 })
+
+
+ipc.on('loading-window-show', function (event) {
+	RedisClient.loadingWindow.Window.show();
+})
+
+ipc.on('loading-window-hide', function (event) {
+	RedisClient.loadingWindow.Window.hide();
+})

@@ -61,10 +61,7 @@ var tree = new Vue({
 			ipc.send('open-dialog-window', connstr);
 		},
 		initRedisClient: function(connstr) {
-			alert(conf.get(connstr));
-			console.log(conf.get(connstr));
 			const redis = new redisServer(conf.get(connstr))
-			alert(redis);
 		}
 	}
 });

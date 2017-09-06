@@ -8,7 +8,7 @@ const Common = require('../../common')
 
 class connectionWindow {
   constructor(redisClient) {
-    this.redisClient = redisClient
+    this.redisClient = redisClient;
     this.Window = null;
     this.createConnectionWindow();
   }

@@ -44,13 +44,13 @@
       </header>
       <div class="window-content">
         <div class="pane">
-          <div class="pane-group">
+          <div class="pane-group" id="todo-list">
             <div class="pane-min sidebar">
               <nav class="nav-group">
                 <h5 class="nav-group-title">连接列表</h5>
-                <tree-item id="todo-list">
+                <tree-item>
                   <tree v-for="todo in nodes">
-                    <span class="nav-group-item" @contextmenu.prevent="showDeleteDialog(todo.connstr)" v-on:click="initRedisClient(todo.connstr)">
+                    <span class="nav-group-item" @contextmenu.prevent="showDeleteDialog(todo.connstr)" v-on:click="changeDb(todo.connstr)">
                       <span class="icon icon-link" v-bind:id="todo.connstr"></span>
                       {{todo.name}}
                     </span>
@@ -68,14 +68,53 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>bars.scss</td>
+                  <tr class="blue">
+                    <td v-on:click="changeDbNumber(0)">DB 0</td>
                   </tr>
                   <tr>
-                    <td>base.scss</td>
+                    <td v-on:click="changeDbNumber(1)">DB 1</td>
                   </tr>
                   <tr>
-                    <td>button-groups.scss</td>
+                    <td v-on:click="changeDbNumber(2)">DB 2</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(3)">DB 3</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(4)">DB 4</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(5)">DB 5</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(6)">DB 6</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(7)">DB 7</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(8)">DB 8</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(9)">DB 9</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(10)">DB 10</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(11)">DB 11</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(12)">DB 12</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(13)">DB 13</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(14)">DB 14</td>
+                  </tr>
+                  <tr>
+                    <td v-on:click="changeDbNumber(15)">DB 15</td>
                   </tr>
                 </tbody>
               </table>

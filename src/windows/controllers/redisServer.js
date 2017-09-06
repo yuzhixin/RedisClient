@@ -7,13 +7,18 @@ const ipc = require('electron').ipcRenderer;
 
 
 class redisServer {
-  constructor(connData) {
+  constructor(connData, dbNumber) {
 		this.client = null;
 		this.connData = connData;
+		this.dbNumber = dbNumber;
 		this.createServer();
   }
 
   createServer() {
+		console.log(11111111111);
+		console.log(this.connData);
+		console.log(this.dbNumber);
+		console.log(11111111111);
 		var redis = require('redis');
     var RDS_PORT = this.connData['port'];
     var RDS_HOST = this.connData['host'];
@@ -23,7 +28,7 @@ class redisServer {
 			RDS_OPTS = {auth_pass:RDS_PWD}
 		};
     const client = redis.createClient(RDS_PORT,RDS_HOST,RDS_OPTS);
-
+		client.select(this.dbNumber, function() {});
 		client.auth(RDS_PWD,function(){
 				console.log('通过认证');
 		});

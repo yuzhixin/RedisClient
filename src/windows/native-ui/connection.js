@@ -51,7 +51,9 @@ ipc.on('del-connect-data-relpy', (event, data) => {
 var tree = new Vue({
   el: '#todo-list',
   data: {
-    	nodes: []
+			nodes: [],
+			connstr: null,
+			dbNumber: 0
   },
 	methods: {
     addConnection: function(data) {
@@ -60,17 +62,32 @@ var tree = new Vue({
     showDeleteDialog: function(connstr) {
 			ipc.send('open-dialog-window', connstr);
 		},
-		initRedisClient: function(connstr) {
-			const redis = new redisServer(conf.get(connstr))
+		changeDbNumber: function(dbNumber) {
+			this.dbNumber = dbNumber;
+			this.initRedisClient();
+		},
+		changeDb: function(connstr) {
+			this.connstr = connstr;
+			this.initRedisClient();
+		},
+		initRedisClient: function() {
+			const redis = new redisServer(conf.get(this.connstr), this.dbNumber);
 		}
 	}
 });
 
+function initNodes(){
+	for (let i = 0; i < conf.size; i++) {
+		var connstr = 'conn-'+ i.toString() + '-true';
+		var value = conf.get(connstr);
+		if(value !== undefined && value['isAble']==='true'){
+			tree.nodes.push(value)
+		}
+	};
+	if (tree.nodes.length>0){
+		tree.connstr = tree.nodes[0]['connstr']
+	};
+}
 
-for (let i = 0; i < conf.size; i++) {
-	var connstr = 'conn-'+ i.toString() + '-true';
-	var value = conf.get(connstr);
-	if(value !== undefined && value['isAble']==='true'){
-		tree.nodes.push(value)
-	}
-};
+initNodes()
+

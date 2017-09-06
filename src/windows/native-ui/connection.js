@@ -72,6 +72,12 @@ var tree = new Vue({
 		},
 		initRedisClient: function() {
 			const redis = new redisServer(conf.get(this.connstr), this.dbNumber);
+		},
+		isConnActive: function(connstr) {
+			return connstr == this.connstr
+		},
+		isDbActive: function(dbNumber) {
+			return dbNumber == this.dbNumber
 		}
 	}
 });

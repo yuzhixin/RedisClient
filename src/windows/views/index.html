@@ -17,7 +17,7 @@
         background-color: #f5f5f4;
       }
       .active {
-        background-color: #116cd6;
+        background-color: #1a82fb;
         color:#fff
       }
     </style>
@@ -54,7 +54,7 @@
                 <h5 class="nav-group-title">连接列表</h5>
                 <tree-item>
                   <tree v-for="todo in nodes">
-                    <span class="nav-group-item" @contextmenu.prevent="showDeleteDialog(todo.connstr)" v-on:click="changeDb(todo.connstr)">
+                    <span class="nav-group-item" v-bind:class="{ active: isConnActive(todo.connstr) }" @contextmenu.prevent="showDeleteDialog(todo.connstr)" v-on:click="changeDb(todo.connstr)">
                       <span class="icon icon-link" v-bind:id="todo.connstr"></span>
                       {{todo.name}}
                     </span>
@@ -72,52 +72,52 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="active">
+                  <tr v-bind:class="{ active: isDbActive(0) }">
                     <td v-on:click="changeDbNumber(0)">DB 0</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(1) }">
                     <td v-on:click="changeDbNumber(1)">DB 1</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(2) }">
                     <td v-on:click="changeDbNumber(2)">DB 2</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(3) }">
                     <td v-on:click="changeDbNumber(3)">DB 3</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(4) }">
                     <td v-on:click="changeDbNumber(4)">DB 4</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(5) }">
                     <td v-on:click="changeDbNumber(5)">DB 5</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(6) }">
                     <td v-on:click="changeDbNumber(6)">DB 6</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(7) }">
                     <td v-on:click="changeDbNumber(7)">DB 7</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(8) }">
                     <td v-on:click="changeDbNumber(8)">DB 8</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(9) }">
                     <td v-on:click="changeDbNumber(9)">DB 9</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(10) }">
                     <td v-on:click="changeDbNumber(10)">DB 10</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(11) }">
                     <td v-on:click="changeDbNumber(11)">DB 11</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(12) }">
                     <td v-on:click="changeDbNumber(12)">DB 12</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(13) }">
                     <td v-on:click="changeDbNumber(13)">DB 13</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(14) }">
                     <td v-on:click="changeDbNumber(14)">DB 14</td>
                   </tr>
-                  <tr>
+                  <tr v-bind:class="{ active: isDbActive(15) }">
                     <td v-on:click="changeDbNumber(15)">DB 15</td>
                   </tr>
                 </tbody>

@@ -54,8 +54,8 @@ var tree = new Vue({
 			nodes: [],
 			connstr: null,
 			dbNumber: 0,
-			Keys:[],
-			redis: null
+			keys:[],
+			redis: null,
   },
 	methods: {
     addConnection: function(data) {
@@ -73,25 +73,30 @@ var tree = new Vue({
 			this.initRedisClient();
 		},
 		initRedisClient: function() {
-			const redis = new redisServer(conf.get(this.connstr), this.dbNumber);
-			this.redis = redis;
-			this.getKey('*');
+			redisServer(conf.get(this.connstr), this.dbNumber).then(
+			function(data){
+				console.log('resolved');
+				tree.redis = data;
+				tree.getKeys();
+			}, 
+			function(reason, data){
+				console.log('rejected');
+				console.log(reason);
+			});
 		},
 		isConnActive: function(connstr) {
-			return connstr == this.connstr
+			return connstr == this.connstr;
 		},
 		isDbActive: function(dbNumber) {
-			return dbNumber == this.dbNumber
+			return dbNumber == this.dbNumber;
 		},
-		getKey: function(key) {
-			this.redis.client.on('connect',function(key){
-				console.log(111111111111);
-				console.log(this.set('author', 'Wilson'));
-				console.log(this.get('author', this.print));
-				// console.log(this.redis.client.get('author'));
-				// this.Keys = this.redis.client.get('*');
-				// console.log(this.Keys);
-			});
+		getKeys: function() {
+			tree.redis.keys('*', function (err, keys) {
+				if (err) return console.log(err);
+				for(var i=0;i<5;i++){
+					tree.keys.push(i);
+				}
+			}); 
 		}
 	}
 });

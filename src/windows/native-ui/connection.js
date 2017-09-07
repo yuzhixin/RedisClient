@@ -53,7 +53,9 @@ var tree = new Vue({
   data: {
 			nodes: [],
 			connstr: null,
-			dbNumber: 0
+			dbNumber: 0,
+			Keys:[],
+			redis: null
   },
 	methods: {
     addConnection: function(data) {
@@ -72,12 +74,24 @@ var tree = new Vue({
 		},
 		initRedisClient: function() {
 			const redis = new redisServer(conf.get(this.connstr), this.dbNumber);
+			this.redis = redis;
+			this.getKey('*');
 		},
 		isConnActive: function(connstr) {
 			return connstr == this.connstr
 		},
 		isDbActive: function(dbNumber) {
 			return dbNumber == this.dbNumber
+		},
+		getKey: function(key) {
+			this.redis.client.on('connect',function(key){
+				console.log(111111111111);
+				console.log(this.set('author', 'Wilson'));
+				console.log(this.get('author', this.print));
+				// console.log(this.redis.client.get('author'));
+				// this.Keys = this.redis.client.get('*');
+				// console.log(this.Keys);
+			});
 		}
 	}
 });

@@ -4,6 +4,6 @@ class Common {
 
 }
 
-Common.DEBUG = true;
+Common.DEBUG = false;
 
 module.exports = Common;

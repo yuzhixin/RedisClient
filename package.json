@@ -5,28 +5,26 @@
   "author": "yuzhixin",
   "description": "a simple redis client",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "electron . --ignore-certificate-errors",
+    "build": "./scripts/build-all.sh",
+    "build:osx": "./scripts/build.sh darwin x64",
+    "build:osx64": "./scripts/build.sh darwin x64",
+    "build:linux32": "./scripts/build.sh linux ia32",
+    "build:linux": "./scripts/build.sh linux x64",
+    "build:linux64": "./scripts/build.sh linux x64",
+    "build:win": ".\\scripts\\build-win32.bat win32 ia32",
+    "build:win32": ".\\scripts\\build-win32.bat win32 ia32",
+    "build:win64": ".\\scripts\\build-win32.bat win32 x64"
   },
-  "devDependencies": {
+  "dependencies": {
     "electron-packager": "^9.0.1",
+    "electron-rebuild": "^1.6.0",
+    "grunt-electron-installer": "^2.1.0",
     "electron": "^1.7.5",
     "electron-builder": "^19.27.7",
     "electron-store": "^1.2.0",
     "glob": "^7.1.2",
     "redis": "^2.8.0"
-  },
-  "build": {
-    "appId": "RedisClient",
-    "copyright": "MIT",
-    "productName": "RedisClient",
-    "dmg": {
-      "window": {
-        "x": 100,
-        "y": 100
-      }
-    },
-    "win": {
-      "icon": "./assets/icon"
-    }
   }
 }

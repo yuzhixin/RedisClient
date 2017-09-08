@@ -27,7 +27,7 @@ fi
 
 ignore_list="dist|scripts|\.idea|.*\.md|.*\.yml|node_modules/nodejieba"
 
-electron-packager . ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ "${APP_NAME}" --platform=$PLATFORM --arch=$ARCH --electronVersion=1.7.5 --app-version=0.1.0 --asar --icon=./assets/icon.icns --overwrite --out=./dist --ignore=${ignore_list}
+electron-packager . "${APP_NAME}" --ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ --platform=$PLATFORM --arch=$ARCH --electronVersion=1.7.5 --app-version=0.1.0 --asar --icon=./assets/icon.icns --overwrite --out=./dist --ignore=${ignore_list}
 
 if [ $? -eq 0 ]; then
   echo -e "$(tput setaf 2)Packaging for $PLATFORM $ARCH succeeded.$(tput sgr0)\n"

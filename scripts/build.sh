@@ -27,8 +27,14 @@ fi
 
 ignore_list="dist|scripts|\.idea|.*\.md|.*\.yml|node_modules/nodejieba"
 
-electron-packager . "${APP_NAME}" --platform=$PLATFORM --arch=$ARCH --electronVersion=1.7.5 --app-version=1.0.0 --asar --icon=assets/icon.icns --overwrite --out=./dist --ignore=${ignore_list}
+electron-packager . "${APP_NAME}" --platform=$PLATFORM --arch=$ARCH --electronVersion=1.7.5 --app-version=0.1.0 --asar --icon=./assets/icon.icns --overwrite --out=./dist --ignore=${ignore_list}
 
 if [ $? -eq 0 ]; then
   echo -e "$(tput setaf 2)Packaging for $PLATFORM $ARCH succeeded.$(tput sgr0)\n"
 fi
+
+
+#if [ $PLATFORM = "darwin" ]; then
+#    ditto -rsrcFork ./dist/Electronic\ WeChat-darwin-x64/Electronic\ WeChat.app /Applications/Electronic\ WeChat.app
+#    echo "$(tput setaf 3)App copied to /Applications. You can open 魔方微猎CRM there or from Spotlight.$(tput sgr0)"
+#fi

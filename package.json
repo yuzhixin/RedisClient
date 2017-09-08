@@ -7,8 +7,12 @@
     "glob": "^7.1.0",
     "redis": "^2.8.0",
     "vue-contextmenu": "^1.4.7",
-    "vuex": "^2.4.0"
+    "vuex": "^2.4.0",
+    "electron": "1.7.5"
   },
+  "scripts": {
+    "start": "electron ."
+  },                                   
   "devDependencies": {
     "electron-packager": "^9.0.1"
   }

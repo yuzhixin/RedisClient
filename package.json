@@ -2,18 +2,31 @@
   "name": "RedisClient",
   "version": "0.1.0",
   "main": "src/main.js",
-  "dependencies": {
-    "electron-store": "1.2.0",
-    "glob": "^7.1.0",
-    "redis": "^2.8.0",
-    "vue-contextmenu": "^1.4.7",
-    "vuex": "^2.4.0",
-    "electron": "1.7.5"
-  },
+  "author": "yuzhixin",
+  "description": "a simple redis client",
   "scripts": {
     "start": "electron ."
-  },                                   
+  },
   "devDependencies": {
     "electron-packager": "^9.0.1"
+  },
+  "build": {
+    "appId": "RedisClient",
+    "copyright": "MIT",
+    "productName": "RedisClient",
+    "dmg": {
+      "window": {
+        "x": 100,
+        "y": 100
+      }
+    },
+    "win": {
+      "icon": "./assets/icon"
+    }
+  },
+  "dependencies": {
+    "electron-store": "^1.2.0",
+    "glob": "^7.1.2",
+    "redis": "^2.8.0"
   }
 }

@@ -8,5 +8,8 @@
     "redis": "^2.8.0",
     "vue-contextmenu": "^1.4.7",
     "vuex": "^2.4.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^9.0.1"
   }
 }

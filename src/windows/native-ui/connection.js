@@ -103,7 +103,6 @@ var tree = new Vue({
 			this.redis.get(key, function(err, reply) {
 				if (typeof(reply) !=="undefined"){
 					tree.value = format(reply);
-					console.log(format(reply));
 				}else{
 					tree.value = null;
 					console.log('undefined');

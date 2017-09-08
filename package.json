@@ -8,7 +8,12 @@
     "start": "electron ."
   },
   "devDependencies": {
-    "electron-packager": "^9.0.1"
+    "electron-packager": "^9.0.1",
+    "electron": "^1.7.5",
+    "electron-builder": "^19.27.7",
+    "electron-store": "^1.2.0",
+    "glob": "^7.1.2",
+    "redis": "^2.8.0"
   },
   "build": {
     "appId": "RedisClient",
@@ -23,10 +28,5 @@
     "win": {
       "icon": "./assets/icon"
     }
-  },
-  "dependencies": {
-    "electron-store": "^1.2.0",
-    "glob": "^7.1.2",
-    "redis": "^2.8.0"
   }
 }

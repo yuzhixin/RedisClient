@@ -46,9 +46,9 @@
           </div>
         </div>
       </header>
-      <div class="window-content">
+      <div class="window-content" id="todo-list">
         <div class="pane">
-          <div class="pane-group" id="todo-list">
+          <div class="pane-group">
             <div class="pane-min sidebar">
               <nav class="nav-group">
                 <h5 class="nav-group-title">连接列表</h5>
@@ -72,53 +72,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-bind:class="{ active: isDbActive(0) }">
-                    <td v-on:click="changeDbNumber(0)">DB 0</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(1) }">
-                    <td v-on:click="changeDbNumber(1)">DB 1</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(2) }">
-                    <td v-on:click="changeDbNumber(2)">DB 2</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(3) }">
-                    <td v-on:click="changeDbNumber(3)">DB 3</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(4) }">
-                    <td v-on:click="changeDbNumber(4)">DB 4</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(5) }">
-                    <td v-on:click="changeDbNumber(5)">DB 5</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(6) }">
-                    <td v-on:click="changeDbNumber(6)">DB 6</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(7) }">
-                    <td v-on:click="changeDbNumber(7)">DB 7</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(8) }">
-                    <td v-on:click="changeDbNumber(8)">DB 8</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(9) }">
-                    <td v-on:click="changeDbNumber(9)">DB 9</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(10) }">
-                    <td v-on:click="changeDbNumber(10)">DB 10</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(11) }">
-                    <td v-on:click="changeDbNumber(11)">DB 11</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(12) }">
-                    <td v-on:click="changeDbNumber(12)">DB 12</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(13) }">
-                    <td v-on:click="changeDbNumber(13)">DB 13</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(14) }">
-                    <td v-on:click="changeDbNumber(14)">DB 14</td>
-                  </tr>
-                  <tr v-bind:class="{ active: isDbActive(15) }">
-                    <td v-on:click="changeDbNumber(15)">DB 15</td>
+                  <tr v-for="n in 16" v-bind:class="{ active: isDbActive(n-1) }">
+                    <td v-on:click="changeDbNumber(n-1)">DB {{n-1}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -133,60 +88,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <sssss v-for="key in keys">
-                    <tr>
-                      <td>1111</td>
-                    </tr>
-                  </sssss>
+                  <tr v-for="key in keys">
+                    <td v-on:click="getValue(key)">{{key}}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
-            <div class="pane">
-              <div class="pane">
-                <table class="table-striped">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Kind</th>
-                      <th>Date Modified</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>bars.scss</td>
-                      <td>Document</td>
-                      <td>Oct 13, 2015</td>
-                    </tr>
-                    <tr>
-                      <td>bars.scss</td>
-                      <td>Document</td>
-                      <td>Oct 13, 2015</td>
-                    </tr>
-                    <tr>
-                      <td>bars.scss</td>
-                      <td>Document</td>
-                      <td>Oct 13, 2015</td>
-                    </tr>
-                    <tr>
-                      <td>bars.scss</td>
-                      <td>Document</td>
-                      <td>Oct 13, 2015</td>
-                    </tr>
-                    <tr>
-                      <td>bars.scss</td>
-                      <td>Document</td>
-                      <td>Oct 13, 2015</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="pane" v-if="value">
+              <pre>{{value}}</pre>
             </div>
-          </div>
+            <div class="pane" v-else>
+              空
+            </div>
         </div>
       </div>
     </div>
   <script>
-    require('../native-ui/connection')
+    require('../native-ui/connection');
+    require()
   </script>
+  <script src='../native-ui/formatJson.js' type="text/javascript"></script>
   </body>
 </html>

@@ -5,6 +5,8 @@ const ipc = require('electron').ipcRenderer;
 const Store = require('electron-store');
 const conf = new Store();
 const redisServer = require('../controllers/redisServer');
+const format = require('./formatJson')
+
 const newConnection = document.getElementById('new-connection');
 const plus = document.getElementById('icon-plus-circled');
 const minus = document.getElementById('icon-minus-circled');
@@ -56,6 +58,7 @@ var tree = new Vue({
 			dbNumber: 0,
 			keys:[],
 			redis: null,
+			value:null
   },
 	methods: {
     addConnection: function(data) {
@@ -91,13 +94,22 @@ var tree = new Vue({
 			return dbNumber == this.dbNumber;
 		},
 		getKeys: function() {
-			tree.redis.keys('*', function (err, keys) {
+			this.redis.keys('*', function (err, keys) {
 				if (err) return console.log(err);
-				for(var i=0;i<5;i++){
-					tree.keys.push(i);
-				}
+				tree.keys = keys
 			}); 
-		}
+		},
+		getValue: function(key) {
+			this.redis.get(key, function(err, reply) {
+				if (typeof(reply) !=="undefined"){
+					tree.value = format(reply);
+					console.log(format(reply));
+				}else{
+					tree.value = null;
+					console.log('undefined');
+				}
+			});
+		},
 	}
 });
 
